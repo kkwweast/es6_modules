@@ -1,4 +1,5 @@
 // Exercise 5
+import WishList from "./wishlist"
 
 const inputForm = document.querySelector("#submitForm");
 const carMakeInput = document.querySelector("#car-MakeInput");
@@ -9,13 +10,15 @@ const carModelPara = document.querySelector("#car-Model");
 const carYearPara = document.querySelector("#car-Year");
 const removeBtn = document.querySelector(".removeBtn");
 const wishListUL = document.querySelector(".wishlistContainer > ul");
-// Invoking the constructor on our class to create
+
+
 const wishList = new WishList();
 
 inputForm.addEventListener("submit", addCar);
 
 removeBtn.addEventListener("click", removeCar);
 
+//Exercise 6
 function showCarDetails(car) {
   carMakePara.textContent = car.make;
   carModelPara.textContent = car.model;
@@ -23,9 +26,8 @@ function showCarDetails(car) {
   removeBtn.disabled = false;
   removeBtn.setAttribute("data-carId", car.id);
 }
+//Exercise 7
 
-// Populate the list of cars on the page
-// Reset the list, and then make the cars again
 function updateDomList() {
   wishListUL.innerHTML = "";
 
@@ -37,18 +39,29 @@ function updateDomList() {
     li.addEventListener("click", () => {
       showCarDetails(element);
     });
+    
     // 3. Append the elements
     wishListUL.appendChild(li);
   });
 }
 
-// Handling an event that will add a car to the list and update
+//Exercise 8
+
 function addCar(event) {
-  // Prevent the browser from performing its default action
   event.preventDefault();
+  var carMakeInput = document.getElementById("makeInput");
+        var modelInput = document.getElementById("modelInput");
+        var yearInput = document.getElementById("yearInput");
+
+        WishList.add(carMakeInput.value, modelInput.value, yearInput.value); // Call wishlist.add with the values from the inputs
+        WishList.updateDOMList(); // Call updateDOMList to update the wishlist on the DOM
+    }
+
+  event.preventDefault() ;{  
   wishList.add(carMakeInput.value, carModelInput.value, carYearInput.value);
   updateDomList();
 }
+//Exercise 9
 
 function removeCar() {
   const carId = Number(removeBtn.getAttribute("data-carId"));
