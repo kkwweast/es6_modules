@@ -28,7 +28,7 @@ class Wishlist {
         this.list.splice(i, 1);
         }
     }}
-}
+
 
 export default Wishlist;
 

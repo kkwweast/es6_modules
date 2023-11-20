@@ -32,15 +32,15 @@ function updateDomList() {
   wishListUL.innerHTML = "";
 
   wishList.list.forEach((element, index, array) => {
-    // 1. Create the elements
+    //  Create the elements
     const li = document.createElement("li");
     li.textContent = `${element.make} ${element.model}`;
-    // 2. Modify the elements
+    //  Modify the elements
     li.addEventListener("click", () => {
       showCarDetails(element);
     });
     
-    // 3. Append the elements
+    //  Append the elements
     wishListUL.appendChild(li);
   });
 }
